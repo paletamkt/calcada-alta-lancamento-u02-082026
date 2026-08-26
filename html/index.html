@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estratégia de Lançamento | Calçada Alta Unidade 02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#8B3A3A;--red-light:#A85555;
+  --gold:#C8A882;--gold-light:#D4B896;
+  --teal:#0B5673;--teal-light:#1a7a9e;
+  --cream:#f7f3ec;--cream2:#ede8df;--cream3:#e5ddd0;
+  --dark:#1a1209;--dark2:#251b0f;--dark3:#3a2815;
+  --text-d:#e8e2d9;--text-dm:#a89880;
+  --text-l:#1a1209;--text-lm:#5a4a38;
+  --border-d:rgba(139,58,58,.15);--border-l:rgba(200,168,130,.1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;font-weight:300;background:var(--dark);overflow-x:hidden;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gradShift{0%{background-position:0%}100%{background-position:200%}}
+@keyframes lineGrow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.75)}}
+
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .8s ease,transform .8s ease;}
+.reveal.in{opacity:1;transform:none;}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 40px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(26,18,9,.97),transparent);backdrop-filter:blur(10px);}
+.nav-logo{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--text-d);letter-spacing:-.02em;}
+.nav-logo em{color:var(--gold);font-style:normal;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dm);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--dark);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:10px 20px;border-radius:3px;transition:background .3s,transform .2s;}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);}
+
+/* BUTTONS */
+.btn{display:inline-block;padding:15px 32px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border-radius:3px;border:none;cursor:pointer;transition:all .25s;}
+.btn-gold{background:var(--gold);color:var(--dark);}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 28px rgba(200,168,130,.3);}
+.btn-outline{background:transparent;color:var(--text-d);border:1px solid rgba(232,226,217,.2);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
+
+/* LAYOUT */
+.container{max-width:1160px;margin:0 auto;padding:0 24px;}
+.section{padding:100px 0;}
+.s-dark{background:var(--dark);}
+.s-mid{background:var(--dark2);}
+.s-light{background:var(--cream);}
+.s-cream{background:var(--cream2);}
+
+.eyebrow{font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);}
+.ey-red{color:var(--red-light);}.ey-red::before{background:var(--red-light);}
+.ey-teal{color:var(--teal-light);}.ey-teal::before{background:var(--teal-light);}
+
+h2.display{font-family:'Fraunces',serif;font-size:clamp(30px,4.5vw,54px);font-weight:700;line-height:1.08;letter-spacing:-.025em;margin-bottom:20px;}
+.dl{color:var(--text-d);}.dd{color:var(--text-l);}
+.gold{color:var(--gold);}.red{color:var(--red-light);}
+.lead{font-size:16px;line-height:1.8;font-weight:300;max-width:560px;}
+.ld{color:var(--text-dm);}.ll{color:var(--text-lm);}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 25% 50%,rgba(139,58,58,.18) 0%,transparent 70%),radial-gradient(ellipse 55% 70% at 75% 30%,rgba(200,168,130,.12) 0%,transparent 70%);}
+.hero-line{position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(200,168,130,.2) 45%,transparent);animation:lineGrow 2s ease forwards;transform-origin:top;}
+.hero-accent{position:absolute;bottom:0;left:0;width:100%;height:2px;background:linear-gradient(to right,transparent,var(--red-light),var(--gold),transparent);background-size:200%;animation:gradShift 5s linear infinite;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,130,.08);border:1px solid rgba(200,168,130,.25);border-radius:100px;padding:6px 18px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:44px;opacity:0;animation:fadeUp .8s .3s ease forwards;}
+.hero-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite;}
+.hero-eyebrow{font-family:'Fraunces',serif;font-size:13px;font-weight:300;letter-spacing:.25em;text-transform:uppercase;color:var(--text-dm);margin-bottom:18px;opacity:0;animation:fadeUp .8s .5s ease forwards;}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(52px,10vw,112px);font-weight:900;line-height:.9;letter-spacing:-.035em;color:var(--text-d);margin-bottom:28px;opacity:0;animation:fadeUp 1s .7s ease forwards;}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--text-dm);font-weight:300;max-width:520px;line-height:1.75;margin-bottom:52px;opacity:0;animation:fadeUp .8s 1s ease forwards;}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .8s 1.2s ease forwards;}
+.hero-image{width:100%;max-width:600px;height:300px;background:linear-gradient(135deg,rgba(139,58,58,.15) 0%,rgba(200,168,130,.1) 100%);border-radius:4px;margin-top:40px;display:flex;align-items:center;justify-content:center;color:var(--text-dm);font-size:14px;text-align:center;padding:20px;opacity:0;animation:fadeUp .8s 1.4s ease forwards;}
+
+/* 3 PILARES CARDS */
+.pilares-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border-d);margin-top:60px;}
+.pilar{background:var(--dark2);padding:40px 32px;position:relative;overflow:hidden;transition:background .35s,transform .3s;}
+.pilar:hover{background:var(--dark3);transform:translateY(-3px);}
+.pilar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s;}
+.pilar:hover::before{transform:scaleX(1);}
+.pilar-g::before{background:var(--gold);}
+.pilar-r::before{background:var(--red-light);}
+.pilar-t::before{background:var(--teal-light);}
+.pilar-icon{font-size:28px;margin-bottom:18px;display:block;animation:float 4s ease-in-out infinite;}
+.pilar-num{font-family:'Fraunces',serif;font-size:clamp(36px,4vw,56px);font-weight:900;line-height:1;margin-bottom:8px;}
+.pilar-g .pilar-num{color:var(--gold);}
+.pilar-r .pilar-num{color:var(--red-light);}
+.pilar-t .pilar-num{color:var(--teal-light);}
+.pilar-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dm);margin-bottom:12px;font-weight:500;}
+.pilar-desc{font-size:13px;color:var(--text-dm);line-height:1.75;}
+.pilar-desc strong{color:var(--text-d);font-weight:500;}
+.pilar-image{width:100%;height:180px;background:linear-gradient(135deg,rgba(139,58,58,.1),rgba(200,168,130,.08));border-radius:4px;margin:20px 0;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-dm);text-align:center;padding:16px;}
+
+/* 3 PACOTES */
+.pacotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border-d);margin-top:60px;}
+.pacote{background:var(--dark2);padding:40px 32px;position:relative;overflow:hidden;transition:all .35s;}
+.pacote:hover{background:var(--dark3);transform:translateY(-3px);}
+.pacote.destaque{border:1px solid var(--gold);background:linear-gradient(135deg,var(--dark2) 0%,rgba(200,168,130,.08) 100%);transform:scale(1.02);}
+.pacote.destaque::before{content:'RECOMENDADO';position:absolute;top:12px;right:12px;font-size:9px;letter-spacing:.15em;text-transform:uppercase;background:var(--gold);color:var(--dark);padding:6px 12px;border-radius:3px;font-weight:600;}
+.pacote-title{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--text-d);margin-bottom:20px;}
+.pacote-items{display:flex;flex-direction:column;gap:12px;margin-bottom:24px;}
+.pacote-item{display:flex;align-items:flex-start;gap:10px;font-size:12px;color:var(--text-dm);line-height:1.6;}
+.pacote-item::before{content:'✓';color:var(--gold);font-weight:bold;margin-right:6px;flex-shrink:0;}
+.pacote-price{background:rgba(200,168,130,.08);padding:20px;border-radius:4px;margin-top:20px;border-left:2px solid var(--gold);}
+.pacote-price-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-dm);margin-bottom:8px;}
+.pacote-price-val{font-family:'Fraunces',serif;font-size:28px;font-weight:900;color:var(--gold);}
+
+/* TIMELINE FASES */
+.fases-wrap{margin-top:60px;}
+.fases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border-d);}
+.fase{background:var(--dark2);padding:32px 24px;position:relative;}
+.fase::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .5s;}
+.fase:hover::after{transform:scaleX(1);}
+.fase-dot{width:12px;height:12px;background:var(--gold);border-radius:50%;margin-bottom:16px;display:block;}
+.fase-title{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--text-d);margin-bottom:8px;}
+.fase-date{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dm);margin-bottom:12px;font-weight:500;}
+.fase-desc{font-size:12px;color:var(--text-dm);line-height:1.7;}
+
+/* CANAIS CARDS */
+.canais-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;background:var(--border-d);margin-top:60px;}
+.canal{background:var(--dark2);padding:28px 24px;transition:background .35s,transform .3s;}
+.canal:hover{background:var(--dark3);transform:translateY(-3px);}
+.canal-icon{font-size:24px;margin-bottom:12px;}
+.canal-title{font-family:'Fraunces',serif;font-size:14px;font-weight:700;color:var(--text-d);margin-bottom:8px;}
+.canal-desc{font-size:11px;color:var(--text-dm);line-height:1.7;}
+
+/* RECOMENDAÇÃO */
+.rec-wrap{background:linear-gradient(135deg,var(--red-light) 0%,var(--gold) 100%);background-size:200%;animation:gradShift 8s linear infinite;padding:60px 40px;border-radius:4px;margin-top:60px;color:white;}
+.rec-title{font-family:'Fraunces',serif;font-size:36px;font-weight:900;margin-bottom:24px;}
+.rec-items{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.rec-item{display:flex;gap:12px;align-items:flex-start;}
+.rec-item::before{content:'●';font-size:18px;color:white;margin-right:6px;flex-shrink:0;}
+.rec-item p{font-size:14px;line-height:1.7;}
+.rec-item strong{font-weight:600;}
+
+/* TABELA */
+.comp-table{width:100%;border-collapse:collapse;margin-top:40px;background:var(--dark2);}
+.comp-table thead{background:var(--dark3);}
+.comp-table th{padding:20px;text-align:left;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-d);font-weight:600;border-bottom:1px solid var(--border-d);}
+.comp-table td{padding:16px 20px;font-size:13px;color:var(--text-dm);border-bottom:1px solid var(--border-d);}
+.comp-table tr:hover{background:var(--dark3);}
+.td-n{font-weight:500;color:var(--text-d);}
+.td-m{color:var(--gold);font-weight:600;}
+
+/* FOOTER */
+footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px;text-align:center;}
+.footer-inner{max-width:1160px;margin:0 auto;}
+.footer-brand{font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:var(--gold);margin-bottom:12px;}
+.footer-brand em{font-style:normal;color:var(--text-d);}
+.footer-info{font-size:12px;color:var(--text-dm);line-height:1.8;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .pilares-grid,.pacotes-grid,.fases-grid,.canais-grid{grid-template-columns:1fr;}
+  .rec-items{grid-template-columns:1fr;}
+  nav{flex-direction:column;gap:12px;padding:12px 20px;}
+  .nav-links{flex-wrap:wrap;justify-content:center;gap:12px;}
+  h2.display{font-size:28px;}
+  .section{padding:60px 0;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Calçada <em>Alta</em></div>
+  <ul class="nav-links">
+    <li><a href="#pilares">Conteúdo</a></li>
+    <li><a href="#pacotes">Pacotes</a></li>
+    <li><a href="#fases">Cronograma</a></li>
+    <li><a href="#canais">Canais</a></li>
+    <li><a href="#recomendacao">Recomendação</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero" class="section s-dark">
+  <div class="hero-glow"></div>
+  <div class="hero-line"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-badge">
+      <span class="hero-dot"></span> Lançamento 15 de Setembro
+    </div>
+    <div class="hero-eyebrow">Unidade 02 — Efigênio Park Mall</div>
+    <h1 class="hero-title">Estratégia de<br>Lançamento</h1>
+    <p class="hero-sub">Consolidar presença territorial e capturar público AB no Efigênio Park Mall com narrativa de herança e expansão estratégica.</p>
+    <div class="hero-cta">
+      <button class="btn btn-gold">Ver Cronograma</button>
+      <button class="btn btn-outline">Detalhes de Investimento</button>
+    </div>
+    <div class="hero-image">
+      [IMAGEM: Foto da nova unidade — espaço elegante, moderno + herança. Altura: 300px, Width: 600px máximo]
+    </div>
+  </div>
+  <div class="hero-accent"></div>
+</section>
+
+<!-- VISÃO GERAL -->
+<section class="section s-light">
+  <div class="container">
+    <div class="eyebrow reveal">Visão Geral</div>
+    <h2 class="display dd reveal d1">O momento<br>decisivo.</h2>
+    <p class="lead ll reveal d2">A Unidade 02 consolida presença territorial do Calçada Alta no Efigênio Park Mall, abrindo espaço para público AB, famílias jovens e executivos corporativos. Uma expansão que mantém a narrativa de "Culinária de Gerações" e reforça credibilidade da marca.</p>
+    <p class="lead ll reveal d3" style="margin-top:24px;">Investimento estruturado em mídia offline (outdoor, painel, elevadores) + tráfego digital + assessoria de imprensa garante expectativa crescente, impacto máximo no lançamento e consolidação sólida nos 75 dias seguintes.</p>
+  </div>
+</section>
+
+<!-- 3 PILARES -->
+<section id="pilares" class="section s-dark">
+  <div class="container">
+    <div class="eyebrow reveal">Estratégia de Conteúdo</div>
+    <h2 class="display dl reveal d1">Os 3 Pilares<br>que falam.</h2>
+    <p class="lead ld reveal d2" style="text-align:center;margin:0 auto 20px;">Produção concentrada em uma diária. Distribuição em fases.</p>
+
+    <div class="pilares-grid">
+      <div class="pilar pilar-g reveal d1">
+        <div class="pilar-icon">📖</div>
+        <div class="pilar-num">1</div>
+        <div class="pilar-label">Narrativa de Herança</div>
+        <div class="pilar-desc">Falar do <strong>novo momento fazendo memória</strong> desde o Sr. Antônio (1957). A chegada da Unidade 02 não é ruptura — é <strong>continuidade evolutiva</strong> da história familiar.</div>
+        <div class="pilar-image">[IMAGEM: Sr. Antônio ou elemento histórico — 180px × altura variável]</div>
+      </div>
+
+      <div class="pilar pilar-r reveal d2">
+        <div class="pilar-icon">👥</div>
+        <div class="pilar-num">2</div>
+        <div class="pilar-label">Prova Social</div>
+        <div class="pilar-desc">Trazer <strong>3 clientes históricos</strong> para contar suas histórias. 1 depoimento extenso (âncora) + 2 cortes curtos. Gera <strong>identificação, humanidade e legitimidade</strong>.</div>
+        <div class="pilar-image">[IMAGEM: Cliente em destaque — entrevista/rosto real — 180px × altura variável]</div>
+      </div>
+
+      <div class="pilar pilar-t reveal d3">
+        <div class="pilar-icon">🍽️</div>
+        <div class="pilar-num">3</div>
+        <div class="pilar-label">Apetite Visual</div>
+        <div class="pilar-desc">Produção de conteúdo dos <strong>pratos exclusivos</strong> (food porn). Entra no teaser como revelação gradual, pico no lançamento, alimenta feed por 60+ dias.</div>
+        <div class="pilar-image">[IMAGEM: Prato novo — alta qualidade, elegante — 180px × altura variável]</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 PACOTES -->
+<section id="pacotes" class="section s-cream">
+  <div class="container">
+    <div class="eyebrow reveal">Investimento</div>
+    <h2 class="display dd reveal d1">Os Três Pacotes<br>de Ambição.</h2>
+    <p class="lead ll reveal d2" style="text-align:center;margin:0 auto 20px;max-width:600px;">Cada um une mídia offline, tráfego digital e assessoria de imprensa em progressão clara. Pacote Ampliado é o ponto de equilíbrio recomendado.</p>
+
+    <div class="pacotes-grid">
+      <!-- Essencial -->
+      <div class="pacote reveal d1">
+        <div class="pacote-title">Essencial</div>
+        <div class="pacote-items">
+          <div class="pacote-item">Outdoor 30 dias — R$ 4.500</div>
+          <div class="pacote-item">Painel Luminoso 30 dias — R$ 4.500</div>
+          <div class="pacote-item">Tráfego — R$ 3.000/mês</div>
+          <div class="pacote-item">Assessoria de Imprensa</div>
+        </div>
+        <div class="pacote-price">
+          <div class="pacote-price-label">Investimento</div>
+          <div class="pacote-price-val">R$ 12k<br><span style="font-size:14px;font-weight:400;">mês 1</span></div>
+          <div style="font-size:11px;color:var(--text-dm);margin-top:8px;">+ R$ 3k (meses 2–3)</div>
+        </div>
+      </div>
+
+      <!-- Ampliado (Recomendado) -->
+      <div class="pacote pacote destaque reveal d2">
+        <div class="pacote-title">Ampliado</div>
+        <div class="pacote-items">
+          <div class="pacote-item">Outdoor 30 dias — R$ 4.500</div>
+          <div class="pacote-item">Painel Luminoso 60 dias — R$ 9.000</div>
+          <div class="pacote-item">Elevadores Garden 90 dias — R$ 2.328</div>
+          <div class="pacote-item">Tráfego — R$ 3.500/mês (pico: R$ 4.000)</div>
+          <div class="pacote-item">Assessoria de Imprensa</div>
+        </div>
+        <div class="pacote-price">
+          <div class="pacote-price-label">Investimento</div>
+          <div class="pacote-price-val">R$ 17k<br><span style="font-size:14px;font-weight:400;">mês 1</span></div>
+          <div style="font-size:11px;color:var(--text-dm);margin-top:8px;">R$ 6.5k (mês 2) · R$ 3.5k (mês 3)</div>
+        </div>
+      </div>
+
+      <!-- Máximo -->
+      <div class="pacote reveal d3">
+        <div class="pacote-title">Máximo</div>
+        <div class="pacote-items">
+          <div class="pacote-item">Outdoor 30 dias — R$ 4.500</div>
+          <div class="pacote-item">Painel Luminoso 90 dias — R$ 13.500</div>
+          <div class="pacote-item">Elevadores Mundi + Garden 90 dias — R$ 8.579</div>
+          <div class="pacote-item">Tráfego — R$ 4.000–4.500/mês</div>
+          <div class="pacote-item">Assessoria Reforçada</div>
+        </div>
+        <div class="pacote-price">
+          <div class="pacote-price-label">Investimento</div>
+          <div class="pacote-price-val">R$ 26k<br><span style="font-size:14px;font-weight:400;">mês 1</span></div>
+          <div style="font-size:11px;color:var(--text-dm);margin-top:8px;">R$ 7.5k (mês 2) · R$ 4k (mês 3)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRONOGRAMA FASES -->
+<section id="fases" class="section s-dark">
+  <div class="container">
+    <div class="eyebrow reveal">Cronograma</div>
+    <h2 class="display dl reveal d1">As 4 Fases<br>do Lançamento.</h2>
+
+    <div class="fases-wrap">
+      <div class="fases-grid">
+        <div class="fase reveal d1">
+          <div class="fase-dot"></div>
+          <div class="fase-title">Fase 0</div>
+          <div class="fase-date">25–27 Ago</div>
+          <div class="fase-desc"><strong>Ações Imediatas:</strong> Reserva de outdoor + painel. Produção de conteúdo na Matriz (vídeos + fotos).</div>
+        </div>
+
+        <div class="fase reveal d2">
+          <div class="fase-dot"></div>
+          <div class="fase-title">Fase 1</div>
+          <div class="fase-date">05–14 Set</div>
+          <div class="fase-desc"><strong>Pré-Lançamento:</strong> Outdoor + painel no ar. Distribuição de conteúdo (feed + stories). Tráfego iniciado.</div>
+        </div>
+
+        <div class="fase reveal d3">
+          <div class="fase-dot"></div>
+          <div class="fase-title">Fase 2</div>
+          <div class="fase-date">15 Set</div>
+          <div class="fase-desc"><strong>Lançamento:</strong> Cobertura de imprensa/TV. Conteúdo de pico. Tráfego intensificado.</div>
+        </div>
+
+        <div class="fase reveal d4">
+          <div class="fase-dot"></div>
+          <div class="fase-title">Fase 3</div>
+          <div class="fase-date">16 Set–30 Nov</div>
+          <div class="fase-desc"><strong>Consolidação:</strong> Manutenção de tráfego. Conteúdo recorrente. Elevadores + painel (se período estendido).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANAIS -->
+<section id="canais" class="section s-light">
+  <div class="container">
+    <div class="eyebrow reveal">Justificativa</div>
+    <h2 class="display dd reveal d1">Por Que<br>Cada Canal.</h2>
+
+    <div class="canais-grid">
+      <div class="canal reveal d1">
+        <div class="canal-icon">📍</div>
+        <div class="canal-title">Outdoor</div>
+        <div class="canal-desc">Repetição diária. 30 dias cobrem teaser + abertura + primeiras 2 semanas pós-abertura, quando a conversa está mais quente.</div>
+      </div>
+
+      <div class="canal reveal d2">
+        <div class="canal-icon">💡</div>
+        <div class="canal-title">Painel</div>
+        <div class="canal-desc">Visto à noite (hora de lazer). Mínimo 60 dias para cobrir período crítico de percepção pública e boca-a-boca.</div>
+      </div>
+
+      <div class="canal reveal d3">
+        <div class="canal-icon">🏢</div>
+        <div class="canal-title">Elevadores</div>
+        <div class="canal-desc">Frequência garantida (20–30x/mês). 90 dias transformam morador em cliente recorrente. Viável economicamente.</div>
+      </div>
+
+      <div class="canal reveal d4">
+        <div class="canal-icon">📱</div>
+        <div class="canal-title">Tráfego</div>
+        <div class="canal-desc">Único canal flexível. Escalonado conforme momento: teaser → pico lançamento → consolidação.</div>
+      </div>
+
+      <div class="canal reveal d5">
+        <div class="canal-icon">📺</div>
+        <div class="canal-title">Imprensa</div>
+        <div class="canal-desc">Cobertura editorial que dinheiro pago não compra. Credibilidade e alcance em público não-digital.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOMENDAÇÃO -->
+<section id="recomendacao" class="section s-dark">
+  <div class="container">
+    <div class="eyebrow reveal">Posicionamento</div>
+    <h2 class="display dl reveal d1">Por Que<br>o Pacote Ampliado.</h2>
+
+    <div class="rec-wrap reveal d2">
+      <div class="rec-title">Recomendação Executiva</div>
+      <div class="rec-items">
+        <div class="rec-item">
+          <p><strong>Painel 60 dias</strong> é ponto de inflexão entre teaser e consolidação. Garante presença visual durante primeiros 2 meses de buzz.</p>
+        </div>
+        <div class="rec-item">
+          <p><strong>Elevador Garden Clube</strong> (R$ 2.328/trimestre) é viável e cobre microgeografia estratégica com frequência garantida.</p>
+        </div>
+        <div class="rec-item">
+          <p><strong>Tráfego escalonado</strong> aproveita janela de máxima atenção no lançamento sem desperdiçar recurso.</p>
+        </div>
+        <div class="rec-item">
+          <p><strong>Progressão de investimento</strong> (R$ 17k → R$ 6.5k → R$ 3.5k) é defensável executivamente e clara para stakeholders.</p>
+        </div>
+        <div class="rec-item">
+          <p><strong>Cobre 3 pilares:</strong> alcance geral (outdoor + painel), proximidade/retenção (elevador), responsividade (tráfego).</p>
+        </div>
+        <div class="rec-item">
+          <p><strong>ROI potencial:</strong> Combinação offline + digital + editorial maximiza conversão sem dispersão de orçamento.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRÓXIMOS PASSOS -->
+<section class="section s-cream">
+  <div class="container" style="max-width:760px;">
+    <div class="eyebrow reveal" style="justify-content:center;">Ação Imediata</div>
+    <h2 class="display dd reveal d1" style="text-align:center;">Próximos Passos.</h2>
+
+    <div style="margin-top:48px;">
+      <div class="fluxo">
+        <div class="fluxo-step reveal d1" style="background:var(--dark);padding:32px;border-radius:4px;margin-bottom:16px;">
+          <div class="fluxo-num" style="color:var(--gold);">01</div>
+          <div class="fluxo-title" style="color:var(--text-d);">Aprovação do Pacote</div>
+          <div class="fluxo-desc" style="color:var(--text-dm);">Confirmação de orçamento com Marco. Recomenda-se <strong>Ampliado</strong>.</div>
+        </div>
+
+        <div class="fluxo-step reveal d2" style="background:var(--dark);padding:32px;border-radius:4px;margin-bottom:16px;">
+          <div class="fluxo-num" style="color:var(--gold);">02</div>
+          <div class="fluxo-title" style="color:var(--text-d);">Reservas de Mídia</div>
+          <div class="fluxo-desc" style="color:var(--text-dm);"><strong>Hoje/amanhã:</strong> Contato com fornecedores para outdoor + painel. Fator crítico — espaço é limitado.</div>
+        </div>
+
+        <div class="fluxo-step reveal d3" style="background:var(--dark);padding:32px;border-radius:4px;margin-bottom:16px;">
+          <div class="fluxo-num" style="color:var(--gold);">03</div>
+          <div class="fluxo-title" style="color:var(--text-d);">Produção de Conteúdo</div>
+          <div class="fluxo-desc" style="color:var(--text-dm);"><strong>25/08 (hoje):</strong> Gravação na Matriz com 3 clientes + fotos de pratos. Tudo em uma diária.</div>
+        </div>
+
+        <div class="fluxo-step reveal d4" style="background:var(--dark);padding:32px;border-radius:4px;margin-bottom:16px;">
+          <div class="fluxo-num" style="color:var(--gold);">04</div>
+          <div class="fluxo-title" style="color:var(--text-d);">Pauta de Imprensa</div>
+          <div class="fluxo-desc" style="color:var(--text-dm);"><strong>Até 31/08:</strong> Envio de pauta com narrativa (herança 1957 → novo momento) para assessor.</div>
+        </div>
+
+        <div class="fluxo-step reveal d5" style="background:var(--dark);padding:32px;border-radius:4px;">
+          <div class="fluxo-num" style="color:var(--gold);">05</div>
+          <div class="fluxo-title" style="color:var(--text-d);">Ativação Digital</div>
+          <div class="fluxo-desc" style="color:var(--text-dm);"><strong>05–08/09:</strong> Tráfego pago + elevadores contratados. Cronograma de posts estruturado.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Calçada <em>Alta</em></div>
+    <div class="footer-info">Unidade 02 — Efigênio Park Mall · Manaus, AM<br>25 de agosto de 2026 · Paleta Food Marketing</div>
+  </div>
+</footer>
+
+<style>
+.fluxo{display:grid;grid-template-columns:1fr;gap:0;}
+.fluxo-step{position:relative;padding-left:60px;}
+.fluxo-num{font-family:'Fraunces',serif;font-size:48px;font-weight:900;position:absolute;left:0;top:50%;transform:translateY(-50%);opacity:.2;}
+.fluxo-title{font-family:'Fraunces',serif;font-size:16px;font-weight:700;margin-bottom:8px;}
+.fluxo-desc{font-size:13px;line-height:1.7;}
+</style>
+
+<script>
+const ro = new IntersectionObserver(e => e.forEach(x=>{
+  if(x.isIntersecting) x.target.classList.add('in');
+}),{threshold:.07});
+document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+</script>
+
+</body>
+</html>
