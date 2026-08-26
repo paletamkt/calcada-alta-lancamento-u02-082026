@@ -78,9 +78,8 @@ h2.display{font-family:'Fraunces',serif;font-size:clamp(30px,4.5vw,54px);font-we
 .hero-title{font-family:'Fraunces',serif;font-size:clamp(48px,10vw,96px);font-weight:900;line-height:1;letter-spacing:-.035em;color:var(--text-d);margin-bottom:24px;opacity:0;animation:fadeUp 1s .7s ease forwards;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--text-dm);font-weight:300;max-width:600px;line-height:1.8;margin:0 auto 50px;opacity:0;animation:fadeUp .8s 1s ease forwards;}
 .hero-cta{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-bottom:60px;opacity:0;animation:fadeUp .8s 1.2s ease forwards;}
-
 .hero-image-wrap{width:100%;max-width:800px;opacity:0;animation:slideInUp 1.2s .4s ease forwards;}
-.hero-image{width:100%;height:400px;background:linear-gradient(135deg,rgba(139,58,58,.15) 0%,rgba(232,199,122,.12) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text-dm);overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.hero-image{width:100%;height:400px;background:linear-gradient(135deg,rgba(139,58,58,.15) 0%,rgba(232,199,122,.12) 100%);border-radius:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.4);}
 .hero-image::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent 20%,rgba(255,255,255,.1) 50%,transparent 80%);animation:shimmer 3s infinite;}
 .hero-image img{width:100%;height:100%;object-fit:cover;border-radius:8px;transition:transform 3s cubic-bezier(.25,.46,.45,.94);}
 .hero-image:hover img{transform:scale(1.05);}
@@ -98,23 +97,43 @@ h2.display{font-family:'Fraunces',serif;font-size:clamp(30px,4.5vw,54px);font-we
 .pilar-image{width:100%;height:200px;background:linear-gradient(135deg,rgba(139,58,58,.12),rgba(232,199,122,.1));border-radius:4px;margin:24px 0;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-dm);text-align:center;overflow:hidden;border:1px solid rgba(232,199,122,.1);}
 .pilar-image img{width:100%;height:100%;object-fit:cover;border-radius:4px;}
 
+/* UMA MARCA, DUAS ESTRATÉGIAS */
+.marcas-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;}
+.marca-card{background:linear-gradient(135deg,var(--dark2) 0%,rgba(58,40,21,.5) 100%);padding:48px 40px;border-radius:4px;border:1.5px solid rgba(232,199,122,.1);transition:all .35s;position:relative;}
+.marca-card:hover{border-color:rgba(232,199,122,.25);transform:translateY(-2px);}
+.marca-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold-bright);border-radius:4px 4px 0 0;opacity:0;transition:opacity .35s;}
+.marca-card:hover::before{opacity:1;}
+.marca-icon{font-size:28px;margin-bottom:16px;}
+.marca-title{font-family:'Fraunces',serif;font-size:28px;font-weight:700;color:var(--text-d);margin-bottom:24px;}
+.marca-desc{display:flex;flex-direction:column;gap:16px;}
+.marca-item{display:flex;gap:12px;align-items:flex-start;}
+.marca-item::before{content:'▸';color:var(--gold-bright);font-weight:bold;font-size:16px;flex-shrink:0;}
+.marca-item span{font-size:13px;color:var(--text-dm);line-height:1.6;}
+.marca-item strong{color:var(--text-d);font-weight:600;}
+
+/* FINAL DE ANO - Box destacado */
+.finalano-box{background:linear-gradient(135deg,rgba(232,199,122,.12) 0%,rgba(200,90,90,.08) 100%);padding:40px;border-radius:4px;border-left:4px solid var(--gold-bright);margin-top:60px;}
+.finalano-title{font-family:'Fraunces',serif;font-size:24px;font-weight:700;color:var(--gold-bright);margin-bottom:20px;}
+.finalano-items{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.finalano-item{display:flex;gap:12px;}
+.finalano-item::before{content:'🎄';font-size:20px;flex-shrink:0;}
+.finalano-item div{font-size:13px;color:var(--text-dm);line-height:1.7;}
+.finalano-item strong{color:var(--text-d);display:block;margin-bottom:4px;}
+
 /* 3 PACOTES */
 .pacotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:60px;}
 .pacote{background:linear-gradient(135deg,var(--dark2) 0%,rgba(58,40,21,.5) 100%);padding:40px 32px;position:relative;overflow:hidden;border-radius:4px;transition:all .35s;border:1.5px solid rgba(200,168,130,.12);}
 .pacote:hover{transform:translateY(-4px);border-color:rgba(232,199,122,.3);}
-
 .pacote.destaque{
   background:linear-gradient(135deg,#2d1f10 0%,#1f1508 100%);
   border:2px solid var(--gold-bright);
   box-shadow:0 0 0 1px rgba(232,199,122,.2),0 20px 60px rgba(232,199,122,.15),inset 0 1px 0 rgba(255,255,255,.1);
   transform:scale(1.03);
-  position:relative;
 }
 .pacote.destaque:hover{
   box-shadow:0 0 0 1px rgba(232,199,122,.3),0 30px 80px rgba(232,199,122,.25),inset 0 1px 0 rgba(255,255,255,.15);
   transform:scale(1.04) translateY(-4px);
 }
-
 .pacote.destaque::before{
   content:'✓ RECOMENDADO';
   position:absolute;
@@ -134,7 +153,6 @@ h2.display{font-family:'Fraunces',serif;font-size:clamp(30px,4.5vw,54px);font-we
   box-shadow:0 4px 12px rgba(232,199,122,.25);
   z-index:10;
 }
-
 .pacote-title{font-family:'Fraunces',serif;font-size:26px;font-weight:700;color:var(--text-d);margin-bottom:24px;margin-top:8px;}
 .pacote-items{display:flex;flex-direction:column;gap:14px;margin-bottom:28px;}
 .pacote-item{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--text-dm);line-height:1.6;}
@@ -147,30 +165,20 @@ h2.display{font-family:'Fraunces',serif;font-size:clamp(30px,4.5vw,54px);font-we
 /* FASES */
 .fases-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:60px;}
 .fase{background:linear-gradient(135deg,var(--dark2) 0%,rgba(58,40,21,.5) 100%);padding:32px 24px;position:relative;border-radius:4px;transition:all .35s;border:1px solid rgba(232,199,122,.1);}
-.fase:hover{transform:translateY(-3px);border-color:rgba(232,199,122,.25);background:linear-gradient(135deg,var(--dark3) 0%,rgba(58,40,21,.8) 100%);}
+.fase:hover{transform:translateY(-3px);border-color:rgba(232,199,122,.25);}
 .fase-dot{width:12px;height:12px;background:var(--gold-bright);border-radius:50%;margin-bottom:16px;display:block;box-shadow:0 0 12px rgba(232,199,122,.4);}
 .fase-title{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--text-d);margin-bottom:8px;}
 .fase-date{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-bright);margin-bottom:12px;font-weight:600;}
 .fase-desc{font-size:12px;color:var(--text-dm);line-height:1.7;}
+.fase.highlight{border-color:var(--gold-bright);background:linear-gradient(135deg,rgba(232,199,122,.08) 0%,rgba(58,40,21,.5) 100%);}
 
 /* CANAIS */
 .canais-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:60px;}
 .canal{background:linear-gradient(135deg,var(--dark2) 0%,rgba(58,40,21,.5) 100%);padding:28px 24px;transition:all .35s;border-radius:4px;border:1px solid rgba(232,199,122,.1);}
-.canal:hover{transform:translateY(-3px);border-color:rgba(232,199,122,.25);background:linear-gradient(135deg,var(--dark3) 0%,rgba(58,40,21,.8) 100%);}
+.canal:hover{transform:translateY(-3px);border-color:rgba(232,199,122,.25);}
 .canal-icon{font-size:28px;margin-bottom:12px;}
 .canal-title{font-family:'Fraunces',serif;font-size:14px;font-weight:700;color:var(--text-d);margin-bottom:8px;}
 .canal-desc{font-size:11px;color:var(--text-dm);line-height:1.75;}
-
-/* MÍDIA */
-.midia-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:60px;}
-.midia-card{background:var(--dark2);border-radius:4px;overflow:hidden;transition:all .35s;border:1px solid rgba(232,199,122,.08);}
-.midia-card:hover{transform:translateY(-4px);border-color:rgba(232,199,122,.25);box-shadow:0 12px 40px rgba(0,0,0,.4);}
-.midia-image{width:100%;height:240px;background:linear-gradient(135deg,rgba(139,58,58,.1),rgba(232,199,122,.08));display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.midia-image img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
-.midia-card:hover .midia-image img{transform:scale(1.08);}
-.midia-content{padding:28px 24px;background:linear-gradient(135deg,var(--dark2) 0%,rgba(58,40,21,.5) 100%);}
-.midia-title{font-family:'Fraunces',serif;font-size:16px;font-weight:700;color:var(--text-d);margin-bottom:8px;}
-.midia-desc{font-size:12px;color:var(--text-dm);line-height:1.7;}
 
 /* RECOMENDAÇÃO */
 .rec-wrap{background:linear-gradient(135deg,#C85A5A 0%,#E8C77A 100%);background-size:200%;animation:gradShift 8s linear infinite;padding:60px 48px;border-radius:8px;margin-top:60px;color:white;box-shadow:0 20px 60px rgba(0,0,0,.3);}
@@ -196,7 +204,9 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .pilares-grid,.pacotes-grid,.fases-grid,.canais-grid,.midia-grid{grid-template-columns:1fr;}
+  .pilares-grid,.pacotes-grid,.fases-grid,.canais-grid{grid-template-columns:1fr;}
+  .marcas-grid{grid-template-columns:1fr;}
+  .finalano-items{grid-template-columns:1fr;}
   .pacote.destaque{transform:scale(1);}
   .rec-items{grid-template-columns:1fr;}
   nav{flex-direction:column;gap:12px;padding:12px 20px;}
@@ -204,7 +214,6 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
   h2.display{font-size:28px;}
   .section{padding:60px 0;}
   .hero-image{height:280px;}
-  .midia-image{height:200px;}
   #hero{padding:60px 24px;}
   .rec-wrap{padding:40px 24px;}
   .rec-title{font-size:28px;}
@@ -218,9 +227,8 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
   <div class="nav-logo">Calçada <em>Alta</em></div>
   <ul class="nav-links">
     <li><a href="#pilares">Conteúdo</a></li>
-    <li><a href="#pacotes">Pacotes</a></li>
+    <li><a href="#marcas">Estratégia</a></li>
     <li><a href="#fases">Cronograma</a></li>
-    <li><a href="#canais">Canais</a></li>
   </ul>
 </nav>
 
@@ -230,19 +238,19 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
   <div class="hero-line"></div>
   <div style="position:relative;z-index:1;width:100%;display:flex;flex-direction:column;align-items:center;">
     <div class="hero-badge">
-      <span class="hero-dot"></span> Lançamento 15 de Setembro
+      <span class="hero-dot"></span> Um Novo Capítulo
     </div>
-    <div class="hero-eyebrow">Unidade 02 — Efigênio Park Mall</div>
-    <h1 class="hero-title">Estratégia de<br>Lançamento</h1>
-    <p class="hero-sub">Consolidar presença territorial e capturar público AB no Efigênio Park Mall com narrativa de herança e expansão estratégica.</p>
+    <div class="hero-eyebrow">Calçada Alta</div>
+    <h1 class="hero-title">Crescimento<br>Estratégico</h1>
+    <p class="hero-sub">A marca se multiplica. Centro permanece origem. Park Mall torna-se evolução. Uma voz, duas presenças, um só propósito.</p>
     <div class="hero-cta">
-      <button class="btn btn-gold">Ver Cronograma</button>
+      <button class="btn btn-gold">Ver Estratégia</button>
       <button class="btn btn-outline">Investimento</button>
     </div>
     
     <div class="hero-image-wrap">
       <div class="hero-image">
-        <img src="./assets/images/hero/unidade-02-fachada.jpg" alt="Fachada Unidade 02 Calçada Alta" style="border-radius:8px;">
+        <img src="./assets/images/hero/unidade-02-fachada.jpg" alt="Fachada Unidade 02 Calçada Alta">
       </div>
     </div>
   </div>
@@ -252,28 +260,27 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
 <!-- VISÃO GERAL -->
 <section class="section s-light">
   <div class="container">
-    <div class="eyebrow reveal">Visão Geral</div>
-    <h2 class="display dd reveal d1">O momento<br>decisivo.</h2>
-    <p class="lead ll reveal d2">A Unidade 02 consolida presença territorial do Calçada Alta no Efigênio Park Mall, abrindo espaço para público AB, famílias jovens e executivos corporativos. Uma expansão que mantém a narrativa de "Culinária de Gerações" e reforça credibilidade da marca.</p>
-    <p class="lead ll reveal d3" style="margin-top:24px;">Investimento estruturado em mídia offline (outdoor, painel, elevadores) + tráfego digital + assessoria de imprensa garante expectativa crescente, impacto máximo no lançamento e consolidação sólida nos 75 dias seguintes.</p>
+    <div class="eyebrow reveal">Visão</div>
+    <h2 class="display dd reveal d1">Centro é Origem.<br>Park Mall é Evolução.</h2>
+    <p class="lead ll reveal d2">Calçada Alta não abre uma loja — se multiplica. O Centro permanece a raiz com Cardápio Calçada (original). O Park Mall surge como novo jeito de estar, com pratos exclusivos e público diferente. Mesma marca, duas conversas.</p>
+    <p class="lead ll reveal d3" style="margin-top:24px;">Uma estratégia digital centralizada (um Instagram) garante que a autoridade cresce junto. Cada unidade ganha presença sem perder essência. Final de ano, que já começa em outubro, vê Calçada crescendo em ambos os lugares.</p>
   </div>
 </section>
 
 <!-- 3 PILARES -->
 <section id="pilares" class="section s-dark">
   <div class="container">
-    <div class="eyebrow reveal">Estratégia de Conteúdo</div>
-    <h2 class="display dl reveal d1">Os 3 Pilares<br>que falam.</h2>
-    <p class="lead ld reveal d2" style="text-align:center;margin:0 auto 20px;">Produção concentrada em uma diária. Distribuição em fases.</p>
+    <div class="eyebrow reveal">Conteúdo</div>
+    <h2 class="display dl reveal d1">Os 3 Pilares<br>que Falam.</h2>
 
     <div class="pilares-grid">
       <div class="pilar reveal d1">
         <div class="pilar-icon">📖</div>
         <div class="pilar-num">1</div>
-        <div class="pilar-label">Narrativa de Herança</div>
-        <div class="pilar-desc">Falar do <strong>novo momento fazendo memória</strong> desde o Sr. Antônio (1957). A chegada da Unidade 02 não é ruptura — é <strong>continuidade evolutiva</strong> da história familiar.</div>
+        <div class="pilar-label">Herança</div>
+        <div class="pilar-desc">Falar do novo momento fazendo memória desde Sr. Antônio (1957). Centro é onde tudo começou. Park Mall é onde continua.</div>
         <div class="pilar-image">
-          <img src="./assets/images/pilares/01-sr-antonio.jpg" alt="Sr. Antônio Silva — fundador Calçada Alta">
+          <img src="./assets/images/pilares/01-sr-antonio.jpg" alt="Sr. Antônio Silva — fundador">
         </div>
       </div>
 
@@ -281,7 +288,7 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
         <div class="pilar-icon">👥</div>
         <div class="pilar-num">2</div>
         <div class="pilar-label">Prova Social</div>
-        <div class="pilar-desc">Trazer <strong>3 clientes históricos</strong> para contar suas histórias. 1 depoimento extenso (âncora) + 2 cortes curtos. Gera <strong>identificação, humanidade e legitimidade</strong>.</div>
+        <div class="pilar-desc">3 clientes históricos contam suas histórias. Por que confiam em Calçada. Por que voltam. Por que agora vão conhecer o novo espaço.</div>
         <div class="pilar-image">
           <img src="./assets/images/pilares/02-cliente-destaque.jpg" alt="Cliente fidelidade Calçada Alta">
         </div>
@@ -291,21 +298,173 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
         <div class="pilar-icon">🍽️</div>
         <div class="pilar-num">3</div>
         <div class="pilar-label">Apetite Visual</div>
-        <div class="pilar-desc">Produção de conteúdo dos <strong>pratos exclusivos</strong> (food porn). Entra no teaser como revelação gradual, pico no lançamento, alimenta feed por 60+ dias.</div>
+        <div class="pilar-desc">Pratos exclusivos do Park Mall. Clássicos do Centro remixados. Food porn estratégico que revela não apenas comida, mas possibilidade.</div>
         <div class="pilar-image">
-          <img src="./assets/images/pilares/03-prato-novo.jpg" alt="Prato exclusivo Unidade 02">
+          <img src="./assets/images/pilares/03-prato-novo.jpg" alt="Prato exclusivo Park Mall">
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- UMA MARCA, DUAS ESTRATÉGIAS -->
+<section id="marcas" class="section s-cream">
+  <div class="container">
+    <div class="eyebrow reveal">Digital</div>
+    <h2 class="display dd reveal d1">Um Instagram.<br>Duas Estratégias.</h2>
+    <p class="lead ll reveal d2" style="text-align:center;margin:0 auto 20px;max-width:600px;">Mesma plataforma, conversas distintas. Cada unidade tem seu público, seu horário, sua mensagem.</p>
+
+    <div class="marcas-grid">
+      <div class="marca-card reveal d1">
+        <div class="marca-icon">📍</div>
+        <div class="marca-title">Centro</div>
+        <div class="marca-desc">
+          <div class="marca-item">
+            <span><strong>Cardápio:</strong> Calçada Alta (original)</span>
+          </div>
+          <div class="marca-item">
+            <span><strong>Público:</strong> Clientes históricos, executivos</span>
+          </div>
+          <div class="marca-item">
+            <span><strong>Stories:</strong> 5/dia — momento histórico</span>
+          </div>
+          <div class="marca-item">
+            <span><strong>Posts:</strong> 3x/semana — profundidade</span>
+          </div>
+          <div class="marca-item">
+            <span><strong>Vibe:</strong> Herança, confiança, origem</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="marca-card reveal d2">
+        <div class="marca-icon">🏢</div>
+        <div class="marca-title">Park Mall</div>
+        <div class="marca-desc">
+          <div class="marca-item">
+            <span><strong>Cardápio:</strong> Adaptado + Pratos Exclusivos</span>
+          </div>
+          <div class="marca-item">
+            <span><strong>Público:</strong> Famílias jovens, novo público</span>
+          </div>
+          <div class="marca-item">
+            <span><strong>Stories:</strong> 8/dia — exploração, descoberta</span>
+          </div>
+          <div class="marca-item">
+            <span><strong>Posts:</strong> 4x/semana — conversa constante</span>
+          </div>
+          <div class="marca-item">
+            <span><strong>Vibe:</strong> Inovação, modernidade, possibilidade</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINAL DE ANO -->
+    <div class="finalano-box reveal d3">
+      <div class="finalano-title">Final de Ano — Momento Crítico</div>
+      <div class="finalano-items">
+        <div class="finalano-item">
+          <div>
+            <strong>Outubro–Novembro</strong>
+            Confraternizações em ambas unidades. Público novo descobre Calçada. Marca presente nos dois lugares simultaneamente.
+          </div>
+        </div>
+        <div class="finalano-item">
+          <div>
+            <strong>Encomendas Dezembro</strong>
+            Produção em setembro garante qualidade e pontualidade. Calçada é vista crescendo, não desaparecendo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRONOGRAMA -->
+<section id="fases" class="section s-dark">
+  <div class="container">
+    <div class="eyebrow reveal">Cronograma</div>
+    <h2 class="display dl reveal d1">Quatro Fases<br>do Crescimento.</h2>
+
+    <div class="fases-grid">
+      <div class="fase reveal d1">
+        <div class="fase-dot"></div>
+        <div class="fase-title">Fase 0</div>
+        <div class="fase-date">25–27 Ago</div>
+        <div class="fase-desc">Reserva de mídia. Produção de conteúdo (vídeos + fotos em ambas unidades).</div>
+      </div>
+
+      <div class="fase reveal d2">
+        <div class="fase-dot"></div>
+        <div class="fase-title">Fase 1</div>
+        <div class="fase-date">05–14 Set</div>
+        <div class="fase-desc">Pré-lançamento. Outdoor + painel no ar. Distribuição de conteúdo dual. Tráfego iniciado.</div>
+      </div>
+
+      <div class="fase reveal d3">
+        <div class="fase-dot"></div>
+        <div class="fase-title">Fase 2</div>
+        <div class="fase-date">15 Set</div>
+        <div class="fase-desc">Lançamento. Cobertura imprensa. Conteúdo de pico. Tráfego intensificado para ambas unidades.</div>
+      </div>
+
+      <div class="fase reveal d4 highlight">
+        <div class="fase-dot"></div>
+        <div class="fase-title">Fase 3</div>
+        <div class="fase-date">16 Set–30 Nov</div>
+        <div class="fase-desc">Consolidação. Conteúdo recorrente. Encomendas de final de ano em produção (setembro = setembro). Confraternizações em outubro.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANAIS OFFLINE -->
+<section class="section s-light">
+  <div class="container">
+    <div class="eyebrow reveal">Estratégia</div>
+    <h2 class="display dd reveal d1">Por Quê<br>Cada Canal.</h2>
+
+    <div class="canais-grid">
+      <div class="canal reveal d1">
+        <div class="canal-icon">📍</div>
+        <div class="canal-title">Outdoor</div>
+        <div class="canal-desc">Frequência máxima. Ponto estratégico. Teaser visual que atrai público novo para ambas unidades.</div>
+      </div>
+
+      <div class="canal reveal d2">
+        <div class="canal-icon">💡</div>
+        <div class="canal-title">Painel</div>
+        <div class="canal-desc">Visto à noite (hora lazer). Presença contínua. Localização no shopping = proximidade com U02.</div>
+      </div>
+
+      <div class="canal reveal d3">
+        <div class="canal-icon">🏢</div>
+        <div class="canal-title">Elevadores</div>
+        <div class="canal-desc">Frequência altíssima. Morador vê 20-30x/mês. Transforma em cliente recorrente de ambas unidades.</div>
+      </div>
+
+      <div class="canal reveal d4">
+        <div class="canal-icon">📱</div>
+        <div class="canal-title">Tráfego</div>
+        <div class="canal-desc">Segmentado. Centro → público fidelizado. U02 → público novo. Cada um vai pra unidade certa.</div>
+      </div>
+
+      <div class="canal reveal d5">
+        <div class="canal-icon">📺</div>
+        <div class="canal-title">Imprensa</div>
+        <div class="canal-desc">Editorial. Credibilidade. Calçada não apenas cresce — é notícia de crescimento.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 3 PACOTES -->
-<section id="pacotes" class="section s-cream">
+<section class="section s-dark" style="background:var(--dark2);">
   <div class="container">
     <div class="eyebrow reveal">Investimento</div>
-    <h2 class="display dd reveal d1">Três Pacotes<br>de Ambição.</h2>
-    <p class="lead ll reveal d2" style="text-align:center;margin:0 auto 20px;max-width:600px;">Cada um une mídia offline, tráfego digital e assessoria de imprensa em progressão clara. Pacote Ampliado é o equilíbrio ideal.</p>
+    <h2 class="display dl reveal d1">Três Pacotes<br>de Ambição.</h2>
+    <p class="lead ld reveal d2" style="text-align:center;margin:0 auto 20px;max-width:600px;">Cada um une mídia offline, tráfego digital segmentado e assessoria de imprensa.</p>
 
     <div class="pacotes-grid">
       <div class="pacote reveal d1">
@@ -313,13 +472,13 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
         <div class="pacote-items">
           <div class="pacote-item">Outdoor 30 dias</div>
           <div class="pacote-item">Painel 30 dias</div>
-          <div class="pacote-item">Tráfego digital</div>
+          <div class="pacote-item">Tráfego básico</div>
           <div class="pacote-item">Assessoria</div>
         </div>
         <div class="pacote-price">
           <div class="pacote-price-label">Mês 1</div>
           <div class="pacote-price-val">R$ 12k</div>
-          <div class="pacote-price-desc">+ R$ 3k por mês</div>
+          <div class="pacote-price-desc">+ R$ 3k/mês</div>
         </div>
       </div>
 
@@ -329,7 +488,7 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
           <div class="pacote-item">Outdoor 30 dias</div>
           <div class="pacote-item">Painel 60 dias</div>
           <div class="pacote-item">Elevadores 90 dias</div>
-          <div class="pacote-item">Tráfego escalonado</div>
+          <div class="pacote-item">Tráfego segmentado</div>
           <div class="pacote-item">Assessoria completa</div>
         </div>
         <div class="pacote-price">
@@ -358,151 +517,32 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
   </div>
 </section>
 
-<!-- CRONOGRAMA -->
-<section id="fases" class="section s-dark">
-  <div class="container">
-    <div class="eyebrow reveal">Cronograma</div>
-    <h2 class="display dl reveal d1">Quatro Fases<br>do Lançamento.</h2>
-
-    <div class="fases-grid">
-      <div class="fase reveal d1">
-        <div class="fase-dot"></div>
-        <div class="fase-title">Fase 0</div>
-        <div class="fase-date">25–27 Ago</div>
-        <div class="fase-desc">Reserva de outdoor + painel. Produção de conteúdo (vídeos + fotos).</div>
-      </div>
-
-      <div class="fase reveal d2">
-        <div class="fase-dot"></div>
-        <div class="fase-title">Fase 1</div>
-        <div class="fase-date">05–14 Set</div>
-        <div class="fase-desc">Pré-lançamento. Outdoor + painel no ar. Distribuição de conteúdo. Tráfego iniciado.</div>
-      </div>
-
-      <div class="fase reveal d3">
-        <div class="fase-dot"></div>
-        <div class="fase-title">Fase 2</div>
-        <div class="fase-date">15 Set</div>
-        <div class="fase-desc">Lançamento. Cobertura imprensa. Conteúdo de pico. Tráfego intensificado.</div>
-      </div>
-
-      <div class="fase reveal d4">
-        <div class="fase-dot"></div>
-        <div class="fase-title">Fase 3</div>
-        <div class="fase-date">16 Set–30 Nov</div>
-        <div class="fase-desc">Consolidação. Manutenção. Conteúdo recorrente. Elevadores ativados.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CANAIS -->
-<section id="canais" class="section s-light">
-  <div class="container">
-    <div class="eyebrow reveal">Estratégia</div>
-    <h2 class="display dd reveal d1">Por Que<br>Cada Canal.</h2>
-
-    <div class="canais-grid">
-      <div class="canal reveal d1">
-        <div class="canal-icon">📍</div>
-        <div class="canal-title">Outdoor</div>
-        <div class="canal-desc">Repetição diária no ponto estratégico. Frequência máxima. Mensagem gruda.</div>
-      </div>
-
-      <div class="canal reveal d2">
-        <div class="canal-icon">💡</div>
-        <div class="canal-title">Painel</div>
-        <div class="canal-desc">Visto à noite (hora lazer). 60+ dias cobrem período crítico de buzz.</div>
-      </div>
-
-      <div class="canal reveal d3">
-        <div class="canal-icon">🏢</div>
-        <div class="canal-title">Elevadores</div>
-        <div class="canal-desc">20–30x/mês por morador. 90 dias transformam em cliente recorrente.</div>
-      </div>
-
-      <div class="canal reveal d4">
-        <div class="canal-icon">📱</div>
-        <div class="canal-title">Tráfego</div>
-        <div class="canal-desc">Flexível. Escalonado: teaser → pico → consolidação.</div>
-      </div>
-
-      <div class="canal reveal d5">
-        <div class="canal-icon">📺</div>
-        <div class="canal-title">Imprensa</div>
-        <div class="canal-desc">Editorial não pago. Credibilidade. Alcance público não-digital.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MÍDIA OFFLINE -->
-<section class="section s-dark" style="background:var(--dark2);">
-  <div class="container">
-    <div class="eyebrow reveal">Visualização</div>
-    <h2 class="display dl reveal d1">Mídia Offline<br>em Ação.</h2>
-    <p class="lead ld reveal d2" style="text-align:center;margin:0 auto 40px;max-width:600px;">Cada canal funciona em sincronia para impacto territorial máximo.</p>
-
-    <div class="midia-grid">
-      <div class="midia-card reveal d1">
-        <div class="midia-image">
-          <img src="./assets/images/midia/outdoor-localizacao.jpg" alt="Outdoor estratégico Calçada Alta">
-        </div>
-        <div class="midia-content">
-          <div class="midia-title">Outdoor</div>
-          <div class="midia-desc"><strong>30 dias</strong> no ponto estratégico. Repetição diária gera frequência máxima e impacto territorial.</div>
-        </div>
-      </div>
-
-      <div class="midia-card reveal d2">
-        <div class="midia-image">
-          <img src="./assets/images/midia/painel-luminoso.jpg" alt="Painel luminoso Efigênio Park">
-        </div>
-        <div class="midia-content">
-          <div class="midia-title">Painel Luminoso</div>
-          <div class="midia-desc"><strong>60–90 dias</strong> no shopping à noite. Impacto visual + frequência garantida em hora de lazer.</div>
-        </div>
-      </div>
-
-      <div class="midia-card reveal d3">
-        <div class="midia-image">
-          <img src="./assets/images/midia/predio-efigenio.jpg" alt="Condomínio Efigênio Park">
-        </div>
-        <div class="midia-content">
-          <div class="midia-title">Elevadores</div>
-          <div class="midia-desc"><strong>90 dias</strong> em condomínios AB. 20–30 passagens/mês = frequência altíssima.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- RECOMENDAÇÃO -->
 <section class="section s-dark">
   <div class="container">
     <div class="eyebrow reveal">Posicionamento</div>
-    <h2 class="display dl reveal d1">Por Que o<br>Pacote Ampliado.</h2>
+    <h2 class="display dl reveal d1">Por Quê o<br>Pacote Ampliado.</h2>
 
     <div class="rec-wrap reveal d2">
-      <div class="rec-title">Recomendação Executiva</div>
+      <div class="rec-title">A Marca Cresce. Você Sente.</div>
       <div class="rec-items">
         <div class="rec-item">
-          <p><strong>Painel 60 dias</strong> é ponto crítico. Cobre teaser + abertura + primeiras 8 semanas de consolidação.</p>
+          <p><strong>Captar público novo</strong> sem negligenciar histórico. Tráfego segmentado direciona visitante certo pra unidade certa.</p>
         </div>
         <div class="rec-item">
-          <p><strong>Elevador Garden</strong> (R$ 2.328/trimestre) é viável e cobre microgeografia estratégica com frequência garantida.</p>
+          <p><strong>Presença dupla</strong> no final de ano. Confraternizações em outubro, encomendas em produção (setembro), crescimento visto simultaneamente.</p>
         </div>
         <div class="rec-item">
-          <p><strong>Tráfego escalonado</strong> aproveita janela máxima de atenção sem desperdiçar orçamento na cauda.</p>
+          <p><strong>Painel 60 dias</strong> cobre teaser + abertura + primeiras semanas de consolidação. Marca permanece visível enquanto cresce.</p>
         </div>
         <div class="rec-item">
-          <p><strong>Progressão clara</strong> (R$ 17k → R$ 6.5k → R$ 3.5k) é defensável executivamente e transparente.</p>
+          <p><strong>Elevadores 90 dias</strong> — frequência garantida transforma morador em cliente de ambas unidades. Economicamente viável.</p>
         </div>
         <div class="rec-item">
-          <p><strong>Cobre 3 frentes:</strong> alcance geral (outdoor), presença contínua (painel), proximidade (elevador).</p>
+          <p><strong>Autoridade centralizada</strong> — um Instagram que cresce, duas unidades que prosperam. A marca não se dilui, se multiplica.</p>
         </div>
         <div class="rec-item">
-          <p><strong>ROI maximizado</strong> — Combinação offline + digital + editorial converte melhor sem dispersão.</p>
+          <p><strong>Progressão clara:</strong> R$ 17k → R$ 6.5k → R$ 3.5k. Transparência que inspira confiança executiva.</p>
         </div>
       </div>
     </div>
@@ -525,25 +565,25 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
       <div class="fluxo-step reveal d2">
         <div class="fluxo-num">02</div>
         <div class="fluxo-title">Reserva de Mídia</div>
-        <div class="fluxo-desc"><strong>Hoje/amanhã:</strong> Confirmar outdoor + painel. Fator crítico — espaço é limitado.</div>
+        <div class="fluxo-desc"><strong>Hoje/amanhã:</strong> Confirmar outdoor + painel. Fator crítico — espaço limitado.</div>
       </div>
 
       <div class="fluxo-step reveal d3">
         <div class="fluxo-num">03</div>
         <div class="fluxo-title">Produção de Conteúdo</div>
-        <div class="fluxo-desc"><strong>25/08 (hoje):</strong> Gravação na Matriz com 3 clientes + fotos pratos. Uma diária.</div>
+        <div class="fluxo-desc"><strong>25/08 (hoje):</strong> Gravação em ambas unidades. 3 clientes + pratos + locações.</div>
       </div>
 
       <div class="fluxo-step reveal d4">
         <div class="fluxo-num">04</div>
-        <div class="fluxo-title">Pauta Imprensa</div>
-        <div class="fluxo-desc"><strong>Até 31/08:</strong> Envio de pauta (herança 1957 → novo momento) para assessor.</div>
+        <div class="fluxo-title">Encomendas — Produção</div>
+        <div class="fluxo-desc"><strong>Setembro:</strong> Produção de encomendas de final de ano. Qualidade + prazo garantidos.</div>
       </div>
 
       <div class="fluxo-step reveal d5">
         <div class="fluxo-num">05</div>
         <div class="fluxo-title">Ativação Digital</div>
-        <div class="fluxo-desc"><strong>05–08/09:</strong> Tráfego + elevadores contratados. Cronograma de posts estruturado.</div>
+        <div class="fluxo-desc"><strong>05–08/09:</strong> Tráfego + elevadores. Cronograma de posts (Centro + Park Mall) estruturado.</div>
       </div>
     </div>
   </div>
@@ -552,7 +592,7 @@ footer{background:var(--dark3);border-top:1px solid rgba(232,199,122,.1);padding
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">Calçada <em>Alta</em></div>
-    <div class="footer-info">Unidade 02 — Efigênio Park Mall · Manaus, AM<br>25 de agosto de 2026 · Paleta Food Marketing</div>
+    <div class="footer-info">Centro · Park Mall | Manaus, AM<br>25 de agosto de 2026 · Paleta Food Marketing</div>
   </div>
 </footer>
 
