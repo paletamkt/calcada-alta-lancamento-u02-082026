@@ -78,7 +78,8 @@ h2.display{font-family:'Fraunces',serif;font-size:clamp(30px,4.5vw,54px);font-we
 .hero-title{font-family:'Fraunces',serif;font-size:clamp(52px,10vw,112px);font-weight:900;line-height:.9;letter-spacing:-.035em;color:var(--text-d);margin-bottom:28px;opacity:0;animation:fadeUp 1s .7s ease forwards;}
 .hero-sub{font-size:clamp(15px,2vw,18px);color:var(--text-dm);font-weight:300;max-width:520px;line-height:1.75;margin-bottom:52px;opacity:0;animation:fadeUp .8s 1s ease forwards;}
 .hero-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .8s 1.2s ease forwards;}
-.hero-image{width:100%;max-width:600px;height:300px;background:linear-gradient(135deg,rgba(139,58,58,.15) 0%,rgba(200,168,130,.1) 100%);border-radius:4px;margin-top:40px;display:flex;align-items:center;justify-content:center;color:var(--text-dm);font-size:14px;text-align:center;padding:20px;opacity:0;animation:fadeUp .8s 1.4s ease forwards;}
+.hero-image{width:100%;max-width:600px;height:300px;background:linear-gradient(135deg,rgba(139,58,58,.15) 0%,rgba(200,168,130,.1) 100%);border-radius:4px;margin-top:40px;display:flex;align-items:center;justify-content:center;color:var(--text-dm);font-size:14px;text-align:center;padding:20px;opacity:0;animation:fadeUp .8s 1.4s ease forwards;overflow:hidden;}
+.hero-image img{width:100%;height:100%;object-fit:cover;border-radius:4px;}
 
 /* 3 PILARES CARDS */
 .pilares-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border-d);margin-top:60px;}
@@ -97,7 +98,8 @@ h2.display{font-family:'Fraunces',serif;font-size:clamp(30px,4.5vw,54px);font-we
 .pilar-label{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text-dm);margin-bottom:12px;font-weight:500;}
 .pilar-desc{font-size:13px;color:var(--text-dm);line-height:1.75;}
 .pilar-desc strong{color:var(--text-d);font-weight:500;}
-.pilar-image{width:100%;height:180px;background:linear-gradient(135deg,rgba(139,58,58,.1),rgba(200,168,130,.08));border-radius:4px;margin:20px 0;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-dm);text-align:center;padding:16px;}
+.pilar-image{width:100%;height:180px;background:linear-gradient(135deg,rgba(139,58,58,.1),rgba(200,168,130,.08));border-radius:4px;margin:20px 0;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--text-dm);text-align:center;padding:16px;overflow:hidden;}
+.pilar-image img{width:100%;height:100%;object-fit:cover;border-radius:4px;}
 
 /* 3 PACOTES */
 .pacotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border-d);margin-top:60px;}
@@ -132,6 +134,21 @@ h2.display{font-family:'Fraunces',serif;font-size:clamp(30px,4.5vw,54px);font-we
 .canal-title{font-family:'Fraunces',serif;font-size:14px;font-weight:700;color:var(--text-d);margin-bottom:8px;}
 .canal-desc{font-size:11px;color:var(--text-dm);line-height:1.7;}
 
+/* GALERIA MÍDIA */
+.midia-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border-d);margin-top:60px;}
+.midia-card{background:var(--dark2);padding:0;position:relative;overflow:hidden;transition:transform .35s;}
+.midia-card:hover{transform:translateY(-3px);}
+.midia-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .5s;z-index:2;}
+.midia-card:hover::before{transform:scaleX(1);}
+.midia-g::before{background:var(--gold);}
+.midia-r::before{background:var(--red-light);}
+.midia-t::before{background:var(--teal-light);}
+.midia-image{width:100%;height:240px;background:linear-gradient(135deg,rgba(139,58,58,.1),rgba(200,168,130,.08));display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.midia-image img{width:100%;height:100%;object-fit:cover;}
+.midia-content{padding:32px 24px;background:var(--dark2);}
+.midia-title{font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:var(--text-d);margin-bottom:8px;}
+.midia-desc{font-size:12px;color:var(--text-dm);line-height:1.7;}
+
 /* RECOMENDAÇÃO */
 .rec-wrap{background:linear-gradient(135deg,var(--red-light) 0%,var(--gold) 100%);background-size:200%;animation:gradShift 8s linear infinite;padding:60px 40px;border-radius:4px;margin-top:60px;color:white;}
 .rec-title{font-family:'Fraunces',serif;font-size:36px;font-weight:900;margin-bottom:24px;}
@@ -159,12 +176,13 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
 
 /* RESPONSIVE */
 @media(max-width:768px){
-  .pilares-grid,.pacotes-grid,.fases-grid,.canais-grid{grid-template-columns:1fr;}
+  .pilares-grid,.pacotes-grid,.fases-grid,.canais-grid,.midia-grid{grid-template-columns:1fr;}
   .rec-items{grid-template-columns:1fr;}
   nav{flex-direction:column;gap:12px;padding:12px 20px;}
   .nav-links{flex-wrap:wrap;justify-content:center;gap:12px;}
   h2.display{font-size:28px;}
   .section{padding:60px 0;}
+  .midia-image{height:200px;}
 }
 </style>
 </head>
@@ -178,6 +196,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
     <li><a href="#pacotes">Pacotes</a></li>
     <li><a href="#fases">Cronograma</a></li>
     <li><a href="#canais">Canais</a></li>
+    <li><a href="#midia">Mídia</a></li>
     <li><a href="#recomendacao">Recomendação</a></li>
   </ul>
 </nav>
@@ -198,7 +217,7 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
       <button class="btn btn-outline">Detalhes de Investimento</button>
     </div>
     <div class="hero-image">
-      [IMAGEM: Foto da nova unidade — espaço elegante, moderno + herança. Altura: 300px, Width: 600px máximo]
+      <img src="./assets/images/hero/unidade-02-fachada.jpg" alt="Fachada Unidade 02 Calçada Alta" style="border-radius:4px;">
     </div>
   </div>
   <div class="hero-accent"></div>
@@ -227,7 +246,9 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
         <div class="pilar-num">1</div>
         <div class="pilar-label">Narrativa de Herança</div>
         <div class="pilar-desc">Falar do <strong>novo momento fazendo memória</strong> desde o Sr. Antônio (1957). A chegada da Unidade 02 não é ruptura — é <strong>continuidade evolutiva</strong> da história familiar.</div>
-        <div class="pilar-image">[IMAGEM: Sr. Antônio ou elemento histórico — 180px × altura variável]</div>
+        <div class="pilar-image">
+          <img src="./assets/images/pilares/01-sr-antonio.jpg" alt="Sr. Antônio Silva — fundador Calçada Alta" style="border-radius:4px;">
+        </div>
       </div>
 
       <div class="pilar pilar-r reveal d2">
@@ -235,7 +256,9 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
         <div class="pilar-num">2</div>
         <div class="pilar-label">Prova Social</div>
         <div class="pilar-desc">Trazer <strong>3 clientes históricos</strong> para contar suas histórias. 1 depoimento extenso (âncora) + 2 cortes curtos. Gera <strong>identificação, humanidade e legitimidade</strong>.</div>
-        <div class="pilar-image">[IMAGEM: Cliente em destaque — entrevista/rosto real — 180px × altura variável]</div>
+        <div class="pilar-image">
+          <img src="./assets/images/pilares/02-cliente-destaque.jpg" alt="Cliente fidelidade Calçada Alta — entrevista" style="border-radius:4px;">
+        </div>
       </div>
 
       <div class="pilar pilar-t reveal d3">
@@ -243,7 +266,9 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
         <div class="pilar-num">3</div>
         <div class="pilar-label">Apetite Visual</div>
         <div class="pilar-desc">Produção de conteúdo dos <strong>pratos exclusivos</strong> (food porn). Entra no teaser como revelação gradual, pico no lançamento, alimenta feed por 60+ dias.</div>
-        <div class="pilar-image">[IMAGEM: Prato novo — alta qualidade, elegante — 180px × altura variável]</div>
+        <div class="pilar-image">
+          <img src="./assets/images/pilares/03-prato-novo.jpg" alt="Prato exclusivo Unidade 02 — food photography" style="border-radius:4px;">
+        </div>
       </div>
     </div>
   </div>
@@ -257,7 +282,6 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
     <p class="lead ll reveal d2" style="text-align:center;margin:0 auto 20px;max-width:600px;">Cada um une mídia offline, tráfego digital e assessoria de imprensa em progressão clara. Pacote Ampliado é o ponto de equilíbrio recomendado.</p>
 
     <div class="pacotes-grid">
-      <!-- Essencial -->
       <div class="pacote reveal d1">
         <div class="pacote-title">Essencial</div>
         <div class="pacote-items">
@@ -273,7 +297,6 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
         </div>
       </div>
 
-      <!-- Ampliado (Recomendado) -->
       <div class="pacote pacote destaque reveal d2">
         <div class="pacote-title">Ampliado</div>
         <div class="pacote-items">
@@ -290,7 +313,6 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
         </div>
       </div>
 
-      <!-- Máximo -->
       <div class="pacote reveal d3">
         <div class="pacote-title">Máximo</div>
         <div class="pacote-items">
@@ -385,6 +407,50 @@ footer{background:var(--dark3);border-top:1px solid var(--border-d);padding:40px
         <div class="canal-icon">📺</div>
         <div class="canal-title">Imprensa</div>
         <div class="canal-desc">Cobertura editorial que dinheiro pago não compra. Credibilidade e alcance em público não-digital.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA DE MÍDIA OFFLINE -->
+<section id="midia" class="section s-dark" style="background:var(--dark2);">
+  <div class="container">
+    <div class="eyebrow reveal">Visualização</div>
+    <h2 class="display dl reveal d1">Mídia Offline<br>em Ação.</h2>
+    <p class="lead ld reveal d2" style="text-align:center;margin:0 auto 40px;max-width:600px;">Cada canal offline funciona em sincronia. Aqui, como ficam visíveis em Manaus.</p>
+
+    <div class="midia-grid">
+      <!-- OUTDOOR -->
+      <div class="midia-card midia-g reveal d1">
+        <div class="midia-image">
+          <img src="./assets/images/midia/outdoor-localizacao.jpg" alt="Outdoor estratégico Calçada Alta Unidade 02">
+        </div>
+        <div class="midia-content">
+          <div class="midia-title">Outdoor</div>
+          <div class="midia-desc"><strong>30 dias</strong> no ponto estratégico perto do Efigênio Park Mall. Repetição diária = mensagem gruda. Frequência alta, impacto territorial.</div>
+        </div>
+      </div>
+
+      <!-- PAINEL LUMINOSO -->
+      <div class="midia-card midia-r reveal d2">
+        <div class="midia-image">
+          <img src="./assets/images/midia/painel-luminoso.jpg" alt="Painel luminoso Efigênio Park Mall">
+        </div>
+        <div class="midia-content">
+          <div class="midia-title">Painel Luminoso</div>
+          <div class="midia-desc"><strong>60–90 dias</strong> no shopping, visto à noite (hora de lazer). Impacto visual + frequência garantida. Presença contínua durante consolidação.</div>
+        </div>
+      </div>
+
+      <!-- PRÉDIO ESTRATÉGICO / ELEVADORES -->
+      <div class="midia-card midia-t reveal d3">
+        <div class="midia-image">
+          <img src="./assets/images/midia/predio-efigenio.jpg" alt="Condomínio Efigênio Park — localização estratégica">
+        </div>
+        <div class="midia-content">
+          <div class="midia-title">Elevadores Residenciais</div>
+          <div class="midia-desc"><strong>90 dias</strong> em condomínios AB. 20–30 passagens/mês por morador = frequência altíssima. Transforma morador em cliente recorrente.</div>
+        </div>
       </div>
     </div>
   </div>
